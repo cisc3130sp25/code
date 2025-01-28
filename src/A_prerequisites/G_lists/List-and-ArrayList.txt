@@ -1,0 +1,121 @@
+We all know (or should know...) how to use ArrayLists.
+
+You should know that ArrayList<E> is a generic class,
+so we specify the desired element type inside angle brackets.
+For example, to create an ArrayList of Strings, we say:
+  ArrayList<String> list = new ArrayList<String>();
+Actually, once we've specified "String" (or whatever type)
+on the left-hand side, we don't have to specify it on the
+right-hand side, so we can just say:
+  ArrayList<String> list = new ArrayList<>();
+
+You should also know that the element type (which we place
+inside the angle brackets) must be a reference type. That is,
+it cannot be any of the eight primitive types, such as int,
+double, boolean, or char. If we want a list of integers,
+for example, we have to use the Integer wrapper type, as in:
+  ArrayList<Integer> list = new ArrayList<>();
+
+You should already know the following ArrayList<E> methods:
+- public int size()
+- public boolean isEmpty()
+- public boolean add(E e)
+- public void add(int index, E element)
+- public boolean remove(Object o)
+- public E remove(int index)
+- public E get(int index)
+- public E set(int index, E element)
+- public boolean contains(Object o)
+- public int indexOf(Object o)
+
+Here are a few things which you might not yet know about ArrayLists.
+
+1. The ArrayList class inherits from the List<E> interface.
+   The List interface specifies what it means to be a list.
+   Part of being a list means that the elements have indexes.
+   The List interface specifies methods such as add(int index, E element),
+   remove(int index), get(int index), and indexOf(Object o).
+   In the List interface, these methods are abstract.
+   There are a few implementations of the List interface,
+   one of which is ArrayList. That is, there are a few
+   different classes that inherit from the List interface
+   and override the inherited abstract methods.
+   These classes differ considerably in their internal details,
+   but an object of any of these classes is guaranteed to have
+   the essential list methods, since these classes inherit from
+   the List interface.
+
+2. The List interface, in turn, inherits from the Collection<E>
+   interface, which specifies what it means to be a collection,
+   that is, a group of objects.
+   The Collection interface specifies methods such as
+   add(E element), remove(Object o), contains(Object o), and size().
+   These methods are abstract in Collection, and they are
+   overriden in classes like ArrayList.
+   A collection may or may not allow duplicates,
+   may or may not have indexes,
+   may or may not have a predictable iteration order, etc.
+   There are a few kinds of collections; one kind is list.
+
+3. As we know, we are allowed to use a variable of a supertype to
+   refer to an object of a subtype. For example, suppose we have the
+   following classes:
+      class Person {} // implicitly extends Object
+      class Student extends Person {}
+      class Undergraduate extends Student {}
+   Then the following statements are all legal:
+      Person p1 = new Person();
+      Person p2 = new Student();
+      Person p2 = new Undergraduate();
+
+   Since ArrayList inherits from List, which inherits from Collection,
+   the following statements are legal:
+      List<String> list = new ArrayList<>();
+      Collection<String> collection = new ArrayList<>();
+
+4. The List interface has a useful static method named "of".
+   It has a vararg parameter.
+   This method allows you to pass to it any number of items,
+   and returns a List that contains all of those items,
+   in the order in which they were provided.
+   For example:
+      List<Integer> list = List.of(7, 3, 5);
+      System.out.println(list);        // [7, 3, 5]
+      System.out.println(list.size()); // 3
+
+   Importantly, the List returned by the List.of method is unmodifiable.
+   This means that elements cannot be added, removed, replaced, or moved around.
+   Calling an add, remove, set, or sort method on an unmodifiable List will
+   cause an UnsupportedOperationException to be thrown. But you can
+   call methods like size and contains.
+
+   Note that List.of is another example of a static factory method.
+
+   List.of is a generic method, so it works with all reference types.
+
+   Challenge: what gets printed here?
+        int[] ints = {1, 2, 3};
+        System.out.println(List.of(ints).size());
+   Answer: 1, not 3!
+   Explanation: generics don't play nice with primitive types.
+   Since the method can't return List<int>, it returns a List<int[]>.
+
+5. The ArrayList class has a few constructors.
+   One constructor, used above, is a no-arg constructor.
+   Another constructor has a Collection as its parameter. This constructor
+   takes all the elements from the provided collection and adds them
+   to the newly-created ArrayList. For example:
+      List<Integer> list1 = List.of(1, 2, 3);       // unmodifiable
+      List<Integer> list2 = new ArrayList<>(list1); // modifiable
+      System.out.println(list2); // prints: [1, 2, 3]
+   Note that list1 is a List, which inherits from Collection, so
+   it can be passed to ArrayList's constructor.
+   This is a great way of creating a standard modifiable list and
+   quickly filling it with some elements. That is, instead of the
+   following long way:
+       List<String> list = new ArrayList<>();
+       list.add("a");
+       list.add("b");
+       list.add("c");
+   we can instead say, much more concisely:
+       List<String> list = new ArrayList<>(List.of("a", "b", "c"));

@@ -1,0 +1,74 @@
+Interface: similar to an abstract class.
+
+The main differences between abstract classes and interfaces are:
+1. An interface cannot have "state" (instance fields); an abstract class can.
+2. A class cannot directly extend multiple abstract classes,
+   but a class can directly inherit from multiple interfaces.
+
+   class C implements Interface1, Interface2 {}
+
+In older versions of Java, there was another important difference:
+interfaces were not allowed to contain any concrete (non-abstract) methods.
+But since Java 8, interfaces can have all types of methods.
+So nowadays, both abstract classes and interfaces
+can contain both abstract and non-abstract methods.
+Still, there is a difference:
+- In an abstract class, an instance method is concrete
+  unless it is marked "abstract".
+- In an interface, an instance method is abstract
+  unless it is marked "default".
+
+Both abstract classes and interfaces can contain static methods, marked "static".
+
+Another difference between abstract classes and interfaces is that
+interface methods are public unless marked "private",
+whereas abstract class methods (like regular class methods)
+are not public by default.
+
+until now, we were discussing interfaces from a syntactic point of view.
+What follows is one way of understanding the semantics of an interface.
+(Syntax = grammar, language rules. Semantics = meaning.)
+
+Class: data type with behavior (methods) and state (instance fields).
+Interface: data type with behavior but no state.
+
+Elaboration:
+
+A class:
+- specifies a type (the class name)
+  and its operations (instance method headers)
+- and implements the type with instance fields
+  and the bodies of instance methods
+- So a class combines specification with implementation
+
+An interface:
+- specifies a type (the interface name)
+  and its operations (instance method headers)
+- does not contain full implementation
+    - implementation is deferred to classes that inherit from ("implement")
+      the interface
+- typically contains abstract methods, which are simply instance method headers;
+  non-abstract instance methods must be marked as "default"
+
+We can separate specification from implementation by
+writing an interface as the specification
+and a class as the implementation.
+
+When a class implements an interface,
+it must override all abstract methods inherited from the interface
+(unless the class is itself an abstract class).
+
+One common purpose of an interface is to build a common trait into
+multiple classes that don't have much in common.
+For example, many unrelated types of objects have
+the common property of being comparable,
+meaning that given  a and b, a is either less than b,
+greater than b, or equal to b.
+For example, Strings are comparable, Integers are comparable, etc.
+These classes all implement an interface named Comparable,
+which specifies a method named compareTo.
+
+The compareTo method gets invoked like this: a.compareTo(b). It returns:
+- a negative int if a is before/less than b
+- a positive int if a is after/greater than b
+- 0 if a and b are equal
