@@ -11,7 +11,7 @@ class Animal {
     }
 }
 
-// Suppose I want to define a subclass of Animal 
+// Suppose we want to define a subclass of Animal
 // and create only one object of that subclass.
 // Instead of writing a standalone class that extends Animal
 // and then creating an object of that class, we can instead 
@@ -19,7 +19,7 @@ class Animal {
 
 public class AnonymousClassDemo {
     public static void main(String[] args) {
-        // we are defining an anonymous class that inherits from Animal,
+        // Here we are defining an anonymous class that inherits from Animal,
         // and we are simultaneously creating an object of that anonymous class.
         // An anonymous class must inherit from a class or interface.
         // It's good for a class that you only intend to create a single object of.

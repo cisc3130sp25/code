@@ -36,11 +36,13 @@ public class Student {
     A hash code is an integer associated with an object.
     Hash codes are necessary in order to make certain data
     structures, such as HashMap, work correctly.
-    (We'll learn about HashMap in a few weeks.)
+    (We'll learn about HashMap later in the course.)
 
     The hashCode method returns a hash code for an object.
-    This method is found in the Object class, but we are
-    supposed to override it whenever we override equals.
+    This method is found in the Object class.
+    That version generally returns distinct hash codes for distinct
+    objects, even if we have overridden equals to consider those distinct objects equal.
+    Therefore, we are supposed to override hasCode whenever we override equals.
 
     The most important property that a hashCode method must
     have is that equal objects must have equal hash codes.
@@ -71,14 +73,13 @@ public class Student {
     much as possible to produce unequal hash codes for unequal objects.
     In order to accomplish this, the hash code for an object should
     depend on its fields that are used in the equals method.
-    If we don't follow this ideal way,
-    HashMap (etc.) will still work correctly (as long as we follow
-    the earlier rule) but will work very slowly.
+    If we don't follow this ideal way, HashMap (etc.) will still work correctly,
+    as long as we follow the earlier rule, but will work very slowly.
 
     Writing our own code to make an ideal hashCode method is not easy.
     Luckily, there's a shortcut: the static hash method in the java.util.Objects class.
     (Note the 's' at the end of Objects.)
-    We can send as many fields as we want to this method, and
+    We can pass as many fields as we want to this method, and
     the method returns an integer based on the fields. The
     fields that we send to this method should be the
     same as those that are used in the equals method.

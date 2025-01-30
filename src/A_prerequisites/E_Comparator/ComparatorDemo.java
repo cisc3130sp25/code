@@ -109,8 +109,6 @@ public class ComparatorDemo {
         // get a Comparator that compares Students by the reverse of their natural order
         Comparator<Student> byIdReversed = Comparator.reverseOrder();
 
-        // reverseOrder is a static method of the Comparator interface.
-
         // reverseOrder is an example of a static factory method:
         // a static method (whether in a class or in an interface)
         // that returns an object of the type of the class/interface.

@@ -41,10 +41,10 @@ Another example:
 - A variable of type T can refer to an object of any subclass of T.
 - So a variable anim of type Animal can refer to an Animal object, a Dog object, or a Cat object.
 - Using anim, you can call any method of Animal.
-- But, using anim, you cannot call any methods specific to the subclasses.
-  (Unless you perform a cast, which usually isn't recommended for non-primitives.)
 - When a method is called, the behavior is based on the object's type, not the variable's type.
   This is known as dynamic binding.
+- But, using anim, you cannot call any methods specific to the subclasses.
+  (Unless you perform a cast, which usually isn't recommended for non-primitive types.)
  */
 
 public class PolymorphismDemo {
