@@ -1,4 +1,4 @@
-package B_adts.set;
+package B_adts.OPTIONAL_set;
 
 /**
  * A set of characters, that is, a collection of characters without duplicates.

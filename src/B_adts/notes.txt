@@ -48,13 +48,8 @@ String:
 - mutators: none (String objects are immutable)
 
 Comparator:
-- creators:
-  - Comparator.naturalOrder(): returns a Comparator<T> that uses T's compareTo method.
-  - Comparator.reverseOrder(): returns a Comparator<T> that uses the reverse of T's compareTo method.
-- producers:
-  - if c is a Comparator, then c.reversed() returns a Comparator that does the reverse of c.
-  - if c1 and c2 are Comparators, then c1.thenComparing(c2) returns a Comparator that
-    first compares objects using c1 and then (if there's a tie) compares them using c2.
+- creators: naturalOrder, reverseOrder
+- producers: reversed, thenComparing
 - observer: the compare method?
 - mutators: none
 
