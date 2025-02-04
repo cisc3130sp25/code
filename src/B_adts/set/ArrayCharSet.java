@@ -1,4 +1,4 @@
-package B_adts.OPTIONAL_set;
+package B_adts.set;
 
 public class ArrayCharSet implements CharSet {
     private final char[] chars;
@@ -36,13 +36,13 @@ public class ArrayCharSet implements CharSet {
         if (index < 0) {
             return false;
         } else {
-            // one way (very good): move last character to index, works since we don't care about order in a set
-            // chars[index] = chars[size - 1];
+            // one way: move last character to index; works since we don't care about order in a set
+            chars[index] = chars[size - 1];
 
-            // another way: shift all characters that are after index to the left by one position
-            for (int i = index; i < size - 1; i++) {
-                chars[i] = chars[i + 1];
-            }
+            // another way (less efficient): shift all characters that are after index to the left by one position
+            // for (int i = index; i < size - 1; i++) {
+            //     chars[i] = chars[i + 1];
+            // }
 
             // these lines are applicable to both approaches:
             size--;

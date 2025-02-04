@@ -1,4 +1,4 @@
-package B_adts.OPTIONAL_set;
+package B_adts.set;
 
 public class CharSetDemo {
     public static void main(String[] args) {
