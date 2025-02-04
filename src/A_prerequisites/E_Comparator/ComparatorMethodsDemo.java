@@ -25,8 +25,8 @@ public class ComparatorMethodsDemo {
         System.out.println(alphabetically.compare("dog", "cat"));  // positive int
 
         Comparator<String> alphabeticallyReversed = Comparator.reverseOrder();
-        System.out.println(alphabetically.compare("bird", "cat")); // positive int
-        System.out.println(alphabetically.compare("dog", "cat"));  // negative int
+        System.out.println(alphabeticallyReversed.compare("bird", "cat")); // positive int
+        System.out.println(alphabeticallyReversed.compare("dog", "cat"));  // negative int
 
         Comparator<String> byLength = new Comparator<>() {
             @Override
@@ -38,11 +38,11 @@ public class ComparatorMethodsDemo {
         System.out.println(byLength.compare("dog", "cat"));  // 0
 
         Comparator<String> byLengthReversed = byLength.reversed();
-        System.out.println(byLength.compare("bird", "cat")); // negative int
-        System.out.println(byLength.compare("dog", "cat"));  // 0
+        System.out.println(byLengthReversed.compare("bird", "cat")); // negative int
+        System.out.println(byLengthReversed.compare("dog", "cat"));  // 0
 
         Comparator<String> byLengthThenAlphabetically = byLength.thenComparing(alphabetically);
-        System.out.println(byLength.compare("bird", "cat")); // positive int
-        System.out.println(byLength.compare("dog", "cat"));  // positive int
+        System.out.println(byLengthThenAlphabetically.compare("bird", "cat")); // positive int
+        System.out.println(byLengthThenAlphabetically.compare("dog", "cat"));  // positive int
     }
 }

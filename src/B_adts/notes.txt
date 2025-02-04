@@ -15,7 +15,7 @@ methods work correctly.
 The operations of an abstract type are classified as follows:
 - Creators: create new objects of the type. A creator may take values of
   other types as arguments, but not an object of the type being constructed.
-  Example: List.of(...), ArrayList's constructors.
+  Example: List.of(...), new ArrayList()
 - Producers: also create new objects of the type, but require one or more
   existing objects of the type as input.
   Example: String's substring method.
@@ -36,7 +36,7 @@ int:
 List: List is an interface, which means that other classes provide the actual
 implementation of the data type.
 These classes include ArrayList and LinkedList.
-- creators: ArrayList and LinkedList constructors, List.of
+- creators: new ArrayList(), new LinkedList(), List.of
 - producers: subList
 - observers: size, get
 - mutators: add, remove, set, sort
