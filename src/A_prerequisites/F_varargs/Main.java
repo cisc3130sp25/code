@@ -11,11 +11,13 @@ public class Main {
         System.out.println(sum(arr));         // 6.0
     }
 
-    // This is a method with a vararg parameter.
-    // A vararg parameter is treated by the method as an array.
-    // The caller can pass as many arguments as they wish,
-    // even without creating an array explicitly;
-    // instead, Java creates an array behind the scenes.
+    /*
+     This is a method with a vararg parameter.
+     A vararg parameter is treated by the method as an array.
+     The caller can pass as many arguments as they wish,
+     even without creating an array explicitly;
+     instead, Java creates an array behind the scenes.
+    */
     public static double sum(double... nums) {
         double sum = 0;
 
@@ -27,6 +29,8 @@ public class Main {
     }
 }
 
-// examples of JDK methods with vararg parameters:
-// - Objects.hash(Object... itemsToHash)
-// - System.out.printf(String formatString, Object... args)
+/*
+examples of JDK methods with vararg parameters:
+- Objects.hash(Object... itemsToHash)
+- System.out.printf(String formatString, Object... args)
+*/

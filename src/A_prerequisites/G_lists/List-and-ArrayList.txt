@@ -20,13 +20,16 @@ You should already know the following ArrayList<E> methods:
 - public int size()
 - public boolean isEmpty()
 - public boolean add(E e)
-- public void add(int index, E element)
+- public boolean contains(Object o)
 - public boolean remove(Object o)
+- public void add(int index, E element)
 - public E remove(int index)
 - public E get(int index)
 - public E set(int index, E element)
-- public boolean contains(Object o)
 - public int indexOf(Object o)
+- public int lastIndexOf(Object o)
+- public void sort(Comparator c)
+- public String toString()
 
 Here are a few things which you might not yet know about ArrayLists.
 
@@ -41,7 +44,7 @@ Here are a few things which you might not yet know about ArrayLists.
    different classes that inherit from the List interface
    and override the inherited abstract methods.
    These classes differ considerably in their internal details,
-   but an object of any of these classes is guaranteed to have
+   but each object of these classes is guaranteed to have
    the essential list methods, since these classes inherit from
    the List interface.
 
@@ -76,8 +79,8 @@ Here are a few things which you might not yet know about ArrayLists.
 
    Importantly, the List returned by the List.of method is unmodifiable.
    This means that elements cannot be added, removed, replaced, or moved around.
-   Calling an add, remove, set, or sort method on an unmodifiable List will
-   cause an UnsupportedOperationException to be thrown. But you can
+   Calling an add, remove, set, or sort method on an unmodifiable List
+   causes an UnsupportedOperationException to be thrown. But you can
    call methods like size and contains.
 
    List.of is an example of a static factory method: a static method
@@ -90,8 +93,9 @@ Here are a few things which you might not yet know about ArrayLists.
         System.out.println(List.of(ints).size());
    Answer: 1, not 3!
    Explanation: generics don't play nice with primitive types.
-   Java can perform autoboxing from int to Integer, but not int[] to Integer[].
+   Java can perform autoboxing from int to Integer, but not from int[] to Integer[].
    Since the method can't return List<int>, it returns a List<int[]>.
+   By contrast, List.of(new String[]{"a", "b", "c"}).size() is 3.
 
 5. The ArrayList class has a few constructors.
    One constructor, used above, is a no-arg constructor.
