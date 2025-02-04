@@ -1,0 +1,85 @@
+Abstraction: omitting or hiding low-level details with a simpler,
+higher-level idea.
+
+Abstract data type: a data type that is characterized by its operations
+(method headers + documentation) instead of by its internal representation.
+
+Example: the java.util.List ADT:
+When we talk about a List object, we don't have in mind a LinkedList,
+ArrayList, or any other specific data structure for representing a list.
+Instead, a List is an object that satisfies the specifications of all the
+operations of List: get(), size(), etc. We don't care about how the methods
+work internally and how the elements are stored in memory, as long as the
+methods work correctly.
+
+The operations of an abstract type are classified as follows:
+- Creators: create new objects of the type. A creator may take values of
+  other types as arguments, but not an object of the type being constructed.
+  Example: List.of(...), ArrayList's constructors.
+- Producers: also create new objects of the type, but require one or more
+  existing objects of the type as input.
+  Example: String's substring method.
+- Observers: take objects of the type and return objects of a different type.
+  Example: List's size method.
+- Mutators: modify objects.
+  Example: List's add method.
+
+Here are some examples of abstract data types, along with some of their
+operations, grouped by kind.
+
+int:
+- creators: the numeric literals 0, 1, 2, ...
+- producers: arithmetic operators +, -, *, /, %
+- observers: comparison operators ==, !=, <, >
+- mutators: none (int values are immutable)
+
+List: List is an interface, which means that other classes provide the actual
+implementation of the data type.
+These classes include ArrayList and LinkedList.
+- creators: ArrayList and LinkedList constructors, List.of
+- producers: subList
+- observers: size, get
+- mutators: add, remove, set, sort
+
+String:
+- creators: String constructors, valueOf static methods, String literals (like "abc")
+- producers: concat, substring, toUpperCase
+- observers: length, charAt
+- mutators: none (String objects are immutable)
+
+Comparator:
+- creators:
+  - Comparator.naturalOrder(): returns a Comparator<T> that uses T's compareTo method.
+  - Comparator.reverseOrder(): returns a Comparator<T> that uses the reverse of T's compareTo method.
+- producers:
+  - if c is a Comparator, then c.reversed() returns a Comparator that does the reverse of c.
+  - if c1 and c2 are Comparators, then c1.thenComparing(c2) returns a Comparator that
+    first compares objects using c1 and then (if there's a tie) compares them using c2.
+- observer: the compare method?
+- mutators: none
+
+Java's interface is a useful language mechanism for expressing an abstract data type.
+1. An interface allows us to separate the specification of an ADT from its
+   concrete implementation.
+2. The interface is all a client programmer needs to read to understand the ADT.
+3. If the client just relies on the interface, the client can't create inadvertent
+   dependencies on the ADT’s internal representation, because an interface cannot
+   contain instance fields.
+4. Multiple different representations of one abstract data type can coexist in the
+   same program, as different classes implementing the same interface.
+
+Coding to the interface: writing applications targeted to interfaces, not to
+specific implementations. This makes our code more flexible, by making it easy to
+switch to a different representation later.
+
+Example: List<String> list = new ArrayList<>();
+Using List, instead of ArrayList, as variable type is an example of coding to the interface.
+It ensures that we only call List methods, and not methods specific to ArrayList.
+This makes it possible later to easily switch to another implementation of List,
+such as LinkedList. All we have to do is change every "new ArrayList<>()" to
+"new LinkedList<>()". Since the variable type was List, not ArrayList, the compiler
+makes sure that we only called methods that are available in List, and not any
+methods that are unique to ArrayList.
+
+If there's a real need to use methods that are specific to ArrayList, then we have
+no choice but to use ArrayList as the type. But such a situation is rare.

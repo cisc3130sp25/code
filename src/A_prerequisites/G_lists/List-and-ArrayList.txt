@@ -30,11 +30,11 @@ You should already know the following ArrayList<E> methods:
 
 Here are a few things which you might not yet know about ArrayLists.
 
-1. The ArrayList class inherits from the List<E> interface.
+1. The ArrayList class inherits from the List interface.
    The List interface specifies what it means to be a list.
-   Part of being a list means that the elements have indexes.
-   The List interface specifies methods such as add(int index, E element),
-   remove(int index), get(int index), and indexOf(Object o).
+   One characteristic of a list is that its elements have indexes.
+   The List interface specifies methods such as add(index, element),
+   remove(index), get(index), and indexOf(obj).
    In the List interface, these methods are abstract.
    There are a few implementations of the List interface,
    one of which is ArrayList. That is, there are a few
@@ -45,29 +45,20 @@ Here are a few things which you might not yet know about ArrayLists.
    the essential list methods, since these classes inherit from
    the List interface.
 
-2. The List interface, in turn, inherits from the Collection<E>
+2. The List interface, in turn, inherits from the Collection
    interface, which specifies what it means to be a collection,
    that is, a group of objects.
    The Collection interface specifies methods such as
-   add(E element), remove(Object o), contains(Object o), and size().
+   add(element), remove(obj), contains(obj), and size().
    These methods are abstract in Collection, and they are
-   overriden in classes like ArrayList.
+   overridden in classes like ArrayList.
    A collection may or may not allow duplicates,
    may or may not have indexes,
    may or may not have a predictable iteration order, etc.
    There are a few kinds of collections; one kind is list.
 
 3. As we know, we are allowed to use a variable of a supertype to
-   refer to an object of a subtype. For example, suppose we have the
-   following classes:
-      class Person {} // implicitly extends Object
-      class Student extends Person {}
-      class Undergraduate extends Student {}
-   Then the following statements are all legal:
-      Person p1 = new Person();
-      Person p2 = new Student();
-      Person p2 = new Undergraduate();
-
+   refer to an object of a subtype.
    Since ArrayList inherits from List, which inherits from Collection,
    the following statements are legal:
       List<String> list = new ArrayList<>();
@@ -79,8 +70,8 @@ Here are a few things which you might not yet know about ArrayLists.
    and returns a List that contains all of those items,
    in the order in which they were provided.
    For example:
-      List<Integer> list = List.of(7, 3, 5);
-      System.out.println(list);        // [7, 3, 5]
+      List<Integer> list = List.of(7, 10, 5);
+      System.out.println(list);        // [7, 10, 5]
       System.out.println(list.size()); // 3
 
    Importantly, the List returned by the List.of method is unmodifiable.
@@ -89,15 +80,17 @@ Here are a few things which you might not yet know about ArrayLists.
    cause an UnsupportedOperationException to be thrown. But you can
    call methods like size and contains.
 
-   Note that List.of is another example of a static factory method.
+   List.of is an example of a static factory method: a static method
+   in a class or interface that returns an object of that class or interface.
 
    List.of is a generic method, so it works with all reference types.
 
-   Challenge: what gets printed here?
-        int[] ints = {1, 2, 3};
+   Question: what gets printed here?
+        int[] ints = {5, 10, 15};
         System.out.println(List.of(ints).size());
    Answer: 1, not 3!
    Explanation: generics don't play nice with primitive types.
+   Java can perform autoboxing from int to Integer, but not int[] to Integer[].
    Since the method can't return List<int>, it returns a List<int[]>.
 
 5. The ArrayList class has a few constructors.

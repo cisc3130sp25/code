@@ -9,6 +9,5 @@ public class ObjectUtilsTest {
 
         System.out.println(ObjectUtils.nullSafeEquals("hello", "hello"));             // true
         System.out.println(ObjectUtils.nullSafeEquals("hello", new String("hello"))); // true
-
     }
 }
