@@ -20,6 +20,8 @@ import java.util.Comparator;
 
 public class ComparatorMethodsDemo {
     public static void main(String[] args) {
+        // TODO add example of array, which should be sorted by each Comparator
+
         Comparator<String> alphabetically = Comparator.naturalOrder();
         System.out.println(alphabetically.compare("bird", "cat")); // negative int
         System.out.println(alphabetically.compare("dog", "cat"));  // positive int

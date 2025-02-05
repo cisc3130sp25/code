@@ -1,0 +1,77 @@
+Partial summary of generics:
+
+class MyGenericClass<T> {
+    // T can be used as the type of instance fields
+    // and can be used in constructors and instance methods
+}
+
+class MyGenericInterface<T> {
+    // T can be used in instance methods
+}
+
+class GenericSubclass<E> extends GenericSuperclass<E> {
+}
+
+class GenericImplementation<E> implements GenericInterface<E> {
+}
+
+class MyBoundedGenericClass<T extends SomeType> {
+    // type argument provided by user must be SomeType or inherit from SomeType.
+    // this class can call methods of SomeType on variables of type T.
+}
+
+static <T> ReturnTpe myGenericStaticMethod() {
+    // T can be used anywhere in this method, including the header
+}
+
+static <T extends SomeType> ReturnType myBoundedGenericStaticMethod() {
+    // T must by SomeType or inherit from SomeType
+}
+
+static void m(List<SomeType> list) {
+    // only a List<SomeType> or ArrayList<SomeType> etc. can be passed to this method.
+    // but a List<AnotherType> cannot be, even if AnotherType extends SomeType
+}
+
+static void m(List<?> list) {
+    // can be passed a List of any type, or an ArrayList of any type, etc.
+    // similar to a generic method, but doesn't define a type parameter.
+}
+
+static void m(List<? extends SomeType> list) {
+    // can be passed a List<SomeType> or a List<AnotherType>,
+    // where AnotherType inherits from SomeType
+}
+
+static void m(List<? super SomeType> list) {
+    // can be passed a List<SomeType> or a List<AnotherType>,
+    // where AnotherType is a supertype of SomeType, that is,
+    // SomeType inherits from AnotherType
+}
+
+class MyGeneric<T> {
+    void m1(Generic<T> other) {
+        // accepts only a MyGeneric of the same type as the caller.
+        // so if a is a MyGeneric<Number> we can say a.m1(b) only if
+        // b is also a MyGeneric<Number>, but not if b is a
+        // MyGeneric<Object> or a MyGeneric<Integer>
+    }
+
+    void m2(MyGeneric<?> other) {
+        // accepts a MyGeneric of any type
+    }
+
+    void m3(MyGeneric<? extends T> other) {
+        // accepts a MyGeneric of the same type as the caller, or of a subtype.
+        // so if a is a MyGeneric<Number>, we can say a.m3(b) if b is
+        // a MyGeneric<Number> or a MyGeneric<Integer>, but not if b is a
+        // MyGeneric<Object>
+    }
+
+    void m4(MyGeneric<? super T> other) {
+        // accepts a MyGeneric of the same type as the caller, or of a supertype.
+        // so if a is a MyGeneric<Number>, we can say a.m4(b) if b is
+        // a MyGeneric<Number> or a MyGeneric<Object>, but not if b is a
+        // MyGeneric<Integer>
+    }
+}

@@ -34,4 +34,14 @@ public class StringCharSet implements CharSet {
     public int size() {
         return s.length();
     }
+
+    @Override
+    public int capacity() {
+        return Integer.MAX_VALUE;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + s + "}";
+    }
 }

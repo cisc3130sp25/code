@@ -1,4 +1,4 @@
-package B_adts.letterset;
+package B_adts.OPTIONAL_letterset;
 
 /**
  * A case-insensitive collection of non-duplicate English letters.

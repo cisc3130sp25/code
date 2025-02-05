@@ -1,4 +1,4 @@
-package B_adts.letterset;
+package B_adts.OPTIONAL_letterset;
 
 class Utils {
     static void requireEnglishLetter(char ch) {

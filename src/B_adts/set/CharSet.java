@@ -26,11 +26,38 @@ public interface CharSet {
     boolean contains(char ch);
 
     /**
-     * @return the number of characters in this set
+     * Returns the number of characters currently in this set.
      */
     int size();
 
+    /**
+     * Returns the number of characters that this set can hold at once.
+     */
+    int capacity();
+
+    /**
+     * Returns a String of the form {chars} containing all the characters in the set.
+     */
+    @Override String toString();
+
+    /**
+     * Determines whether the set is full.
+     */
+    default boolean isFull() {
+        return size() == capacity();
+    }
+
+    /**
+     * Returns an empty set with an unlimited capacity.
+     */
     static CharSet create() {
         return new StringCharSet();
+    }
+
+    /**
+     * Returns an empty set with the specified capacity.
+     */
+    static CharSet create(int capacity) {
+        return new ArrayCharSet(capacity);
     }
 }

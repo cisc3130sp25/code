@@ -1,4 +1,4 @@
-package B_adts.letterset;
+package B_adts.OPTIONAL_letterset;
 
 public class ArrayLetterSet implements LetterSet {
     // in this implementation, we don't store letters at all;
