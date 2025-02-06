@@ -3,7 +3,6 @@ package B_adts.rational;
 public class RationalImpl1 implements Rational {
     // in this implementation, numer and denom are not stored in reduced form,
     // but the methods return reduced results
-
     private final int numer, denom;
 
     public RationalImpl1(int a, int b) {

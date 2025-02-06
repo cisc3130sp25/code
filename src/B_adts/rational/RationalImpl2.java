@@ -2,7 +2,6 @@ package B_adts.rational;
 
 public class RationalImpl2 implements Rational {
     // in this implementation, numer and denom are stored in reduced form
-
     private final int numer, denom;
 
     public RationalImpl2(int a, int b) {

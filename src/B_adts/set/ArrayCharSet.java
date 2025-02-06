@@ -63,8 +63,8 @@ public class ArrayCharSet implements CharSet {
     public String toString() {
         String result = "{";
 
-        for (char ch : chars) {
-            result += ch;
+        for (int i = 0; i < size; i++) {
+            result += chars[i];
         }
 
         return result + "}";

@@ -54,8 +54,8 @@ Comparator:
 - mutators: none
 
 Java's interface is a useful language mechanism for expressing an abstract data type.
-1. An interface allows us to separate the specification of an ADT from its
-   concrete implementation.
+1. An interface allows us to separate an ADT's specification (method headers + documentation,
+   in an interface) from an ADT's concrete implementation (fields and method bodies).
 2. The interface is all a client programmer needs to read to understand the ADT.
 3. If the client just relies on the interface, the client can't create inadvertent
    dependencies on the ADT’s internal representation, because an interface cannot

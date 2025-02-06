@@ -12,6 +12,7 @@ public class CharSetDemo {
             set.add(ch);
         }
 
-        System.out.println(set.size());
+        System.out.println(set.size()); // 4
+        System.out.println(set); // {Misp} (or some other order, like {iMps}
     }
 }
