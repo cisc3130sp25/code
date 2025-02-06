@@ -14,12 +14,12 @@ public interface Rational {
     }
 
     /**
-     * Returns the numerator, in reduced form, of this Rational.
+     * Returns the numerator of this Rational in reduced form.
      */
     int numer();
 
     /**
-     * Returns the denominator, in reduced form, of this Rational.
+     * Returns the denominator of this Rational in reduced form.
      */
     int denom();
 }

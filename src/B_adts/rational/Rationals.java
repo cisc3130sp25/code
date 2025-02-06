@@ -18,5 +18,8 @@ public class Rationals {
         return Rational.of(r1.numer() * r2.numer(), r1.denom() * r2.denom());
     }
 
-    // can include sum, difference, quotient, equals operations
+    // Note that the above methods don't care about the internal representation:
+    // they work equally well with RationalImpl1 and RationalImpl2 objects.
+
+    // We can also have sum, difference, quotient, equals operations
 }
