@@ -41,16 +41,16 @@ public class ObjectPair {
 
         ObjectPair stringPair = new ObjectPair("a", "b"); // works
 
-      // so far, so good.
-      // but there are issues with this approach to writing generic classes
+        // so far, so good.
+        // but there are issues with this approach to writing generic classes:
 
         String f = (String) stringPair.getFirst(); // cast required!
 
         // compiler lets this through, but we want to prevent this!
         stringPair.setFirst(33);
 
-        // compiler will allow, but this line will generate a
-        // ClassCastExceptionwhen the program runs
+        // compiler will allow it, but this line will cause a
+        // ClassCastException when the program runs
         f = (String) stringPair.getFirst();
     }
 }
