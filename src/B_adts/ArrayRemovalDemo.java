@@ -2,7 +2,7 @@ package B_adts;
 
 import java.util.Arrays;
 
-// This program demonstrates how to remove elements from a partially-filled array.
+// This program demonstrates how to remove elements from a partially-filled array, while preserving the order of the elements.
 // This is not directly related to the topic of ADTs, but is relevant to the last part of HW 2.
 public class ArrayRemovalDemo {
     public static void main(String[] args) {
@@ -11,7 +11,7 @@ public class ArrayRemovalDemo {
         arr[1] = "b";
         arr[2] = "c";
         arr[3] = "d";
-        int size = 0;
+        int size = 4;
 
         size = remove(arr, 1, size);
         System.out.println(toString(arr, size));
