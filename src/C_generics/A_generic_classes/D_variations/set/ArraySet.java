@@ -3,7 +3,7 @@ package C_generics.A_generic_classes.D_variations.set;
 import java.util.Objects;
 
 // a generic class that implements a generic interface
-public class ArraySet<E> implements Set<E> {
+public class ArraySet<E> implements MySet<E> {
     private final E[] elements;
     private int size;
 

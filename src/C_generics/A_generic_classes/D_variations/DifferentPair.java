@@ -31,9 +31,9 @@ public class DifferentPair<T, U> {
     }
 
     public static void main(String[] args) {
-        DifferentPair<String, Integer> stringIntegerDifferentPair = new DifferentPair<>("a", 67);
-        String first = stringIntegerDifferentPair.getFirst();
-        int second = stringIntegerDifferentPair.getSecond();
+        DifferentPair<String, Integer> stringIntegerPair = new DifferentPair<>("a", 67);
+        String first = stringIntegerPair.getFirst();
+        int second = stringIntegerPair.getSecond();
 
         DifferentPair<String, String> stringStringPair = new DifferentPair<>("a", "b");
 

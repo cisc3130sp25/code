@@ -1,7 +1,6 @@
 package C_generics.C_wildcards;
 
-import C_generics.A_generic_classes.C_current_style.PositiveInteger;
-
+import java.math.BigInteger;
 import java.util.Objects;
 
 public class Pair<T> {
@@ -33,9 +32,11 @@ public class Pair<T> {
         return "(" + first + ", " + second + ")";
     }
 
-    // Suppose p1 is a Pair<String>, and p2 is another pair.
-    // If we say p1.equals(p2), we hope that p2 is also a Pair<String>
-    // But the equals method has no way to guarantee this.
+    /*
+     Suppose p1 is a Pair<String>, and p2 is another pair.
+     If we say p1.equals(p2), we hope that p2 is also a Pair<String>
+     But the equals method has no way to guarantee this.
+    */
     @Override
     public boolean equals(Object o) {
         if (o instanceof Pair) {
@@ -75,12 +76,11 @@ public class Pair<T> {
         // Integer is the type argument here. For this Pair object, T = Integer
         Pair<Integer> integerPair = new Pair<>(89, -90); // autoboxing
 
-        Pair<PositiveInteger> positiveIntegerPair = new Pair<>(
-                new PositiveInteger(5), new PositiveInteger(9));
+        Pair<BigInteger> bigIntegerPair = new Pair<>(new BigInteger("5"), new BigInteger("9"));
 
-        Pair<Number> numberPair = new Pair<>(34.7845, new PositiveInteger(23));
+        Pair<Number> numberPair = new Pair<>(34.7845, new BigInteger("123"));
 
-        numberPair.copyFrom(positiveIntegerPair); // here, T = Number
+        numberPair.copyFrom(bigIntegerPair); // here, T = Number
         System.out.println(numberPair);
 
         integerPair.copyTo(numberPair); // here, T = Integer

@@ -2,7 +2,7 @@ package C_generics.A_generic_classes.D_variations;
 
 // using a generic array to store first and second instead of two variables
 public class PairUsingArray<T> {
-    private T[] items; // we can have a variable of type T[]
+    private final T[] items; // we can have a variable of type T[]
 
     @SuppressWarnings("unchecked") // optional annotation
     public PairUsingArray(T first, T second) {
@@ -30,7 +30,7 @@ public class PairUsingArray<T> {
     }
 
     public static void main(String[] args) {
-        PairUsingArray<String> stringPair = new PairUsingArray<>("a", "b");
-        System.out.println(stringPair);
+        PairUsingArray<String> pair = new PairUsingArray<>("a", "b");
+        System.out.println(pair);
     }
 }

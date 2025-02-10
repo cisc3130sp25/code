@@ -9,21 +9,21 @@ package C_generics.C_wildcards;
 
 - When A inherits from B, we say that A is a subtype of B and 
   that B is a supertype of A.
-    - For example, PositiveInteger is a subtype of Number.
-    - Also, PositiveInteger is a subtype of Object, since Number extends Object.
+    - For example, Double is a subtype of Number.
+    - Also, Double is a subtype of Object, since Number extends Object.
 - A variable of a supertype can refer to an object of a subtype. 
   This is an example of polymorphism.
-    - For example, we can say this: Object o = new PositiveInteger(1, 2);
+    - For example, we can say this: Object o = new Double(1);
     - Moreover, if we have a method like this:
           public static void someMethod(Object o) {
               // ...
           }
       we can invoke the method like this:
-          someMethod(new PositiveInteger(1, 2));
+          someMethod(new Double(1));
 - However, the reverse is not true.
-    - Thus we cannot say PositiveInteger r = new Object();
+    - Thus we cannot say Double r = new Object();
     - And if we have a method like this:
-          public static void someMethod(PositiveInteger r) {
+          public static void someMethod(Double r) {
               // ...
           }
       we cannot invoke it like this:
@@ -38,48 +38,48 @@ package C_generics.C_wildcards;
           ArrayList<Object> list = new ArrayList<>();
           Pair<Object> pair = new Pair<>(new Object(), new Object());
       then the following lines work:
-          arr[0] = new PositiveInteger(1, 2);
+          arr[0] = new Double(1);
           arr[1] = 56;
-          list.add(new PositiveInteger(1, 2));
-          pair.setFirst(new PositiveInteger(1, 2));
-      The idea is: every PositiveInteger is an Object, so an element 
-      of an ArrayList<Object> can refer to a PositiveInteger.
-      It's like saying Object o = new PositiveInteger(1, 2), which works.
+          list.add(new Double(1));
+          pair.setFirst(new Double(1));
+      The idea is: every Double is an Object, so an element
+      of an ArrayList<Object> can refer to a Double.
+      It's like saying Object o = new Double(1), which works.
     - Similarly, if we have:
           Number[] numberArr = new Number[10];
           ArrayList<Number> numberList = new ArrayList<>();
-          Pair<Number> numberPair = new Pair<>(new PositiveInteger(1, 3), new PositiveInteger(1, 4));
+          Pair<Number> numberPair = new Pair<>(new Double(1), new Double(4));
           // cannot say new Number(), since Number is an abstract class.
       then the following lines work:
-          numberArr[0] = new PositiveInteger(1, 2);
-          numberList.add(new PositiveInteger(1, 2));
-          numberPair.setFirst(new PositiveInteger(1, 2));
-      Again the idea is: every PositiveInteger is a Number, so an 
-      element of an ArrayList<Number> can refer to a PositiveInteger.
-      It's like saying Number num = new PositiveInteger(1, 2), which works.
+          numberArr[0] = new Double(1);
+          numberList.add(new Double(1));
+          numberPair.setFirst(new Double(1));
+      Again the idea is: every Double is a Number, so an
+      element of an ArrayList<Number> can refer to a Double.
+      It's like saying Number num = new Double(1), which works.
     - But -- and this important -- it doesn't work in reverse. Thus, 
       if we have this:
-          ArrayList<PositiveInteger> list = new ArrayList<>();
+          ArrayList<Double> list = new ArrayList<>();
       we cannot do this:
           list.add(new Object());
-      Why? The idea is that an Object isn't a PositiveInteger. It's like 
-      saying PositiveInteger r = new Object(), which doesn't work.
+      Why? The idea is that an Object isn't a Double. It's like
+      saying Double r = new Object(), which doesn't work.
 
-- Question: is PositiveInteger[] a subtype of Object[]?
+- Question: is Double[] a subtype of Object[]?
     - Answer: yes.
-    - Thus we can say Object[] arr = new PositiveInteger[3];
-    - This also works: Object[] arr = {new PositiveInteger(1, 2), new PositiveInteger(1, 3)};
+    - Thus we can say Object[] arr = new Double[3];
+    - This also works: Object[] arr = {new Double(1), new Double(2)};
     - Every element of arr is a reference of type Object and can 
-      therefore refer to a PositiveInteger.
+      therefore refer to a Double.
 
-- Question: is ArrayList<PositiveInteger> a subtype of ArrayList<Object>?
+- Question: is ArrayList<Double> a subtype of ArrayList<Object>?
     - Answer: no. (This is not intuitive.)
     - Thus if we have a method like this:
           public static void someMethod(ArrayList<Object> list) {
               // ...
           }
       we CANNOT invoke it like this:
-          ArrayList<PositiveInteger> list = new ArrayList<>();
+          ArrayList<Double> list = new ArrayList<>();
           someMethod(list);
     - Why not?
         - Suppose we have the following perfectly legal method:
@@ -87,14 +87,14 @@ package C_generics.C_wildcards;
                 list.add(0, new Object());
               }
           And somewhere else, we have this:
-              ArrayList<PositiveInteger> list = new ArrayList<>();
+              ArrayList<Double> list = new ArrayList<>();
               someMethod(list); // supposing that this would be allowed
-              PositiveInteger r = list.get(0);
+              Double r = list.get(0);
         - The code would compile fine, but the last line would 
-          generate a ClassCastException, since a PositiveInteger reference
+          generate a ClassCastException, since a Double reference
           variable cannot refer to an object of type Object.
         - To avoid such issues, Java doesn't consider an 
-          ArrayList<PositiveInteger> to be a subtype of ArrayList<Object>.
+          ArrayList<Double> to be a subtype of ArrayList<Object>.
 - More generally: Even if A is a subtype of B, an ArrayList<A> is not 
   considered a subtype of ArrayList<B>.
   Similarly, a Pair<A> is not considered a subtype of Pair<B>.
@@ -102,26 +102,26 @@ package C_generics.C_wildcards;
   considered a subtype of ArrayList<B>.
     - "A is a subtype of B" means that A has at least whatever B has 
       (and possibly more).
-        - For example, PositiveInteger is a subtype of Object, since a PositiveInteger 
+        - For example, Double is a subtype of Object, since a Double
           can do at least whatever an Object can do (call toString, equals, etc.).
     - But while we can add both As and Bs to an ArrayList<B>, we can only 
       add As to an ArrayList<A>.
-        - For example, while we can add PositiveIntegers and Objects to an 
-          ArrayList<Object>, we can only add PositiveIntegers to an ArrayList<PositiveInteger>.
+        - For example, while we can add Doubles and Objects to an
+          ArrayList<Object>, we can only add Doubles to an ArrayList<Double>.
 
 Bottom line:
 If MyClass is a generic class (or interface), then MyClass<A> is never 
 considered to be a subtype of MyClass<B>, even if A is a subtype of B. 
 
 More examples:
-- An ArrayList<Number> can contain Integers and PositiveIntegers, but not Strings.
-- An ArrayList<Object> can contain Integers, PositiveIntegers, and Strings.
-- ArrayList<PositiveInteger> is a subtype of List<PositiveInteger>
-- ArrayList<PositiveInteger> is NOT a subtype of List<Number>
-- ArrayList<PositiveInteger> is NOT a subtype of ArrayList<Number>
+- An ArrayList<Number> can contain Integers and Doubles, but not Strings.
+- An ArrayList<Object> can contain Integers, Doubles, and Strings.
+- ArrayList<Double> is a subtype of List<Double>
+- ArrayList<Double> is NOT a subtype of List<Number>
+- ArrayList<Double> is NOT a subtype of ArrayList<Number>
  */
 
-import C_generics.A_generic_classes.C_current_style.PositiveInteger;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -153,8 +153,8 @@ public class Wildcards {
         System.out.println(sum(numberList));
         List<Integer> integerList = List.of(5, 7, 1);
         System.out.println(sum(integerList));
-        List<PositiveInteger> PositiveIntegerList = List.of(new PositiveInteger(1), new PositiveInteger(2));
-        System.out.println(sum(PositiveIntegerList));
+        List<Double> doubleList = List.of(1.1, 2.2);
+        System.out.println(sum(doubleList));
 
         // method header:
         // public static void addRandomIntegerAtHead(List<? super Integer> list)
@@ -197,8 +197,8 @@ public class Wildcards {
 
     // The upper bounded wildcard, <? extends Foo>, where Foo is any type, 
     // matches Foo and any SUBtype of Foo.
-    // We can pass to this method a List<Number>, a List<PositiveInteger>, a List<Integer>,
-    // an ArrayList<Number>, ArrayList<PositiveInteger>, or an ArrayList<Integer>, etc.
+    // We can pass to this method a List<Number>, a List<Double>, a List<Integer>,
+    // an ArrayList<Number>, ArrayList<Double>, or an ArrayList<Integer>, etc.
     // But we cannot pass to this method a List<Object>, nor a List<String>.
     public static void doSomething1(List<? extends Number> list) {
         // ...
@@ -218,7 +218,7 @@ public class Wildcards {
     // matches Foo and any SUPERtype of Foo. 
     // We can pass to this method a List<Number>, a List<Object>,
     // an ArrayList<Number> or ArrayList<Object>.
-    // But we cannot pass to this method an ArrayList<PositiveInteger> 
+    // But we cannot pass to this method an ArrayList<Double>
     // (nor an ArrayList<Integer>, etc.) nor an ArrayList<String>,
     // nor a List<String>, nor a List<Integer>
     public static void doSomething2(List<? super Number> list) {

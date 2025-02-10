@@ -48,7 +48,7 @@ public class GenericMethods {
 
     public static <E extends Comparable<E>> E max(List<E> list) {
         if (list.isEmpty()) {
-            throw new IllegalArgumentException("empty array");
+            throw new IllegalArgumentException("empty list");
         }
 
         E maxSoFar = list.get(0);

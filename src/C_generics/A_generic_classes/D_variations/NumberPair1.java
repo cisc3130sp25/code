@@ -1,6 +1,6 @@
 package C_generics.A_generic_classes.D_variations;
 
-import C_generics.A_generic_classes.C_current_style.PositiveInteger;
+import java.math.BigInteger;
 
 /*
 If we want a Pair class that will only allow us to create
@@ -16,7 +16,7 @@ Note that this class
 // "T extends Number" means that
 // T must either be Number or a subclass of Number
 public class NumberPair1<T extends Number> {
-    private T first, second;
+    private final T first, second;
 
     public NumberPair1(T first, T second) {
         this.first = first;
@@ -38,11 +38,11 @@ public class NumberPair1<T extends Number> {
     }
 
     public static void main(String[] args) {
-        NumberPair1<Number> pair1 = new NumberPair1<>(23.5, new PositiveInteger(1));
-        Number first = pair1.getFirst();
-        System.out.println(pair1.sum());
+        NumberPair1<Number> pair = new NumberPair1<>(23.5, new BigInteger("123"));
+        Number first = pair.getFirst();
+        System.out.println(pair.sum());
 
         // this is not allowed:
-        // NumberPair1<String> stringPair = new NumberPair1<>("a", "b");
+        // NumberPair1<String> pair2 = new NumberPair1<>("a", "b");
     }
 }

@@ -3,7 +3,7 @@ package C_generics.A_generic_classes.D_variations.set;
 /**
  * A set, that is, a collection of elements without duplicates.
  */
-public interface Set<E> {
+public interface MySet<E> {
     /**
      * Attempts to add s to this set. Returns false if this set already contains e.
      * @param e the object to add
@@ -45,7 +45,7 @@ public interface Set<E> {
     /**
      * Returns an empty set with the specified capacity.
      */
-    static <E> Set<E> create(int capacity) {
+    static <E> MySet<E> create(int capacity) {
         return new ArraySet<>(capacity);
     }
 }

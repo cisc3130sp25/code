@@ -1,7 +1,8 @@
 package C_generics.A_generic_classes.D_variations;
 
 import C_generics.A_generic_classes.C_current_style.Pair;
-import C_generics.A_generic_classes.C_current_style.PositiveInteger;
+
+import java.math.BigInteger;
 
 
 /*
@@ -24,7 +25,7 @@ public class NumberPair2 extends Pair<Number> {
     }
 
     public static void main(String[] args) {
-        NumberPair2 pair = new NumberPair2(23.5, new PositiveInteger(1));
+        NumberPair2 pair = new NumberPair2(23.5, new BigInteger("123"));
         Number first = pair.getFirst();
         Number second = pair.getSecond();
         System.out.println(pair.sum());
