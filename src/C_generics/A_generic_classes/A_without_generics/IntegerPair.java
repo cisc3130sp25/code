@@ -28,14 +28,4 @@ public class IntegerPair {
     public String toString() {
         return "(" + first + ", " + second + ")";
     }
-
-    public static void main(String[] args) {
-        IntegerPair pair = new IntegerPair(45, 33); // autoboxing
-        System.out.println(pair); // (45, 33)
-        pair.setFirst(76);
-        System.out.println(pair.getFirst()); // 76
-
-        // doesn't work
-        // IntegerPair pair2 = new IntegerPair("a", "b");
-    }
 }

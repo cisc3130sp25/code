@@ -28,11 +28,4 @@ public class StringPair {
     public String toString() {
         return "(" + first + ", " + second + ")";
     }
-
-    public static void main(String[] args) {
-        StringPair pair = new StringPair("a", "b");
-        System.out.println(pair); // (a, b)
-        pair.setFirst("c");
-        System.out.println(pair.getFirst()); // c
-    }
 }

@@ -6,7 +6,6 @@ It easily leads to buggy code.
 This way has been out of style since Java version 5, 
 which was released in 2004.
  */
-
 public class ObjectPair {
     private Object first, second;
 
@@ -34,23 +33,5 @@ public class ObjectPair {
     @Override
     public String toString() {
         return "(" + first + ", " + second + ")";
-    }
-
-    public static void main(String[] args) {
-        ObjectPair integerPair = new ObjectPair(45, 33); // works
-
-        ObjectPair stringPair = new ObjectPair("a", "b"); // works
-
-        // so far, so good.
-        // but there are issues with this approach to writing generic classes:
-
-        String f = (String) stringPair.getFirst(); // cast required!
-
-        // compiler lets this through, but we want to prevent this!
-        stringPair.setFirst(33);
-
-        // compiler will allow it, but this line will cause a
-        // ClassCastException when the program runs
-        f = (String) stringPair.getFirst();
     }
 }
