@@ -31,10 +31,7 @@ public class ArraySet<E> implements MySet<E> {
         if (index < 0) {
             return false;
         } else {
-            for (int i = index; i < size - 1; i++) {
-                elements[i] = elements[i + 1];
-            }
-
+            elements[index] = elements[size - 1];
             size--;
             return true;
         }
