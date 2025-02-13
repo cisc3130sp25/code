@@ -7,7 +7,7 @@ import java.math.BigInteger;
 
 /*
 If we want a Pair class that will only allow us to create
-a pair of Number, a pair of Integer, a pair of PositiveInteger, etc.,
+a pair of Number, a pair of Integer, a pair of BigInteger, etc.,
 but not other types of pairs, such as a pair of String,
 this is another way to do it.
 

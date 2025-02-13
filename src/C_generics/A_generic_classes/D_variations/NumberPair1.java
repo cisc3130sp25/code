@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 /*
 If we want a Pair class that will only allow us to create
-a pair of Number, a pair of Integer, a pair of PositiveInteger, etc.,
+a pair of Number, a pair of Integer, a pair of BigInteger, etc.,
 but not other types of pairs, such as a pair of String,
 this is one way to do it.
 
@@ -41,6 +41,9 @@ public class NumberPair1<T extends Number> {
         NumberPair1<Number> pair = new NumberPair1<>(23.5, new BigInteger("123"));
         Number first = pair.getFirst();
         System.out.println(pair.sum());
+
+        NumberPair1<Integer> integerPair = new NumberPair1<>(1, 2);
+        int f = integerPair.getFirst();
 
         // this is not allowed:
         // NumberPair1<String> pair2 = new NumberPair1<>("a", "b");
