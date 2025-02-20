@@ -3,8 +3,6 @@ package D_jcf;
 import java.util.*;
 
 /*
-The enhanced for loop (aka the for-each loop)
-
 The enhanced for loop, which you should already be familiar with,
 can be used with two kinds of objects:
 1. arrays
