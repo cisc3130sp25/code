@@ -30,8 +30,22 @@ public interface MySet<E> extends Iterable<E> {
      */
     int size();
 
-    static <E> MySet<E> create() {
-        return new ArrayMySet<>(10);
+    /**
+     * Returns the number of characters that this set can hold at once.
+     */
+    int capacity();
+
+    /**
+     * Determines whether the set is full.
+     */
+    default boolean isFull() {
+        return size() == capacity();
+    }
+
+    /**
+     * Returns an empty set with the specified capacity.
+     */
+    static <E> MySet<E> create(int capacity) {
+        return new ArraySet<>(capacity);
     }
 }
-

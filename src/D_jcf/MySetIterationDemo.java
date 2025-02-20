@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public class MySetIterationDemo {
     public static void main(String[] args) {
-        MySet<String> set = new ArrayMySet<>(10);
+        MySet<String> set = new ArraySet<>(10);
         set.add("a");
         set.add("b");
         set.add("c");

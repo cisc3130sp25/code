@@ -5,12 +5,12 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 
 // an example of a class with a custom iterator
-public class ArrayMySet<E> implements MySet<E> {
+public class ArraySet<E> implements MySet<E> {
     private final E[] elements;
     private int size;
 
     @SuppressWarnings("unchecked")
-    public ArrayMySet(int capacity) {
+    public ArraySet(int capacity) {
         elements = (E[]) new Object[capacity];
         size = 0;
     }
@@ -24,10 +24,6 @@ public class ArrayMySet<E> implements MySet<E> {
             size++;
             return true;
         }
-    }
-
-    private boolean isFull() {
-        return size == elements.length;
     }
 
     @Override
@@ -61,6 +57,11 @@ public class ArrayMySet<E> implements MySet<E> {
     @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public int capacity() {
+        return elements.length;
     }
 
     @Override
