@@ -36,8 +36,7 @@ public class UnmodifiableViewCollectionDemo {
 
 class SecurityEventLog {
     private final List<String> events;
-    // we need to ensure that once something gets added to this list,
-    // it is impossible to remove it
+    // we want to ensure that nothing can be removed from this list
 
     public SecurityEventLog() {
         events = new ArrayList<>();
