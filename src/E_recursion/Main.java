@@ -5,6 +5,14 @@ public class Main {
         System.out.println(isPalindromeEfficient("racecar"));
     }
 
+    public static int fib(int n) {
+        if (n == 0 || n == 1) {
+            return n;
+        } else {
+            return fib(n - 2) + fib(n - 1);
+        }
+    }
+
     public static boolean isPalindrome(String s) {
         if (s.length() <= 1) {
             return true;
