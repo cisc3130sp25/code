@@ -1,5 +1,7 @@
 package F_search_sort;
 
+// OPTIONAL
+
 /*
 Idea: pick an element to be the "pivot" and rearrange the other
 elements around the pivot: all elements smaller than pivot go to the
@@ -12,6 +14,7 @@ two subarrays around the pivot. Don't do anything to a subarray of length
 public class QuickSort {
     public static void main(String[] args) {
         int[] arr = {2, 3, 0, 5, 6, 1, -2, 3, 14, 12};
+        quickSort(arr);
     }
 
     public static void quickSort(int[] arr) {

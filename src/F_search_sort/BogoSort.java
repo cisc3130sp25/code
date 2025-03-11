@@ -2,6 +2,8 @@ package F_search_sort;
 
 import java.util.Random;
 
+// OPTIONAL
+
 public class BogoSort {
     // a bogus sorting algorithm
     public static void bogoSort(int[] arr) {

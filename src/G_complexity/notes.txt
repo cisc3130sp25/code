@@ -1,0 +1,119 @@
+- Every piece of code (such as a method) can be associated
+  with a function that indicates how many basic steps the code
+  takes to do its job.
+    - Basic steps: arithmetic, getting value of a variable,
+      assigning to a variable, getting value of element in array,
+      assigning to an element of array,
+      calling a method (plus the steps performed by the method).
+    - Not basic steps: creating an array (takes arr.length steps),
+      string concatenation (takes left.length() + right.length() steps).
+- This function is usually based on the size of the input,
+  typically called n; for example, n may be the length of an array.
+- This function tells us the code's "time complexity,"
+  aka "running time," since the amount of time it will take the
+  code to run is determined by the number of basic steps it must
+  perform.
+- These functions are usually difficult to determine precisely.
+  And precision doesn't really matter to us here. We typically
+  use Big Oh notation to simplify these functions.
+
+
+Seven typical running times, with examples,
+listed from best (fastest)to worst (slowest):
+- constant: O(1) [the running time is totally
+                  uninfluenced by the input size]
+  - accessing any element of an array based on its index
+  - ArrayList’s get and size methods
+  - adding two numbers
+  - finding the max of two numbers
+- logarithmic: O(log n)
+  - binary search (iterative and recursive)
+    - Suppose we have 1,000,000 elements.
+      only takes about 20 steps
+- linear: O(n) [number of steps is proportional to n]
+  - linear search
+  - finding max of an array
+- log-linear: n * log(n): O(n log n)
+  - Java's Arrays.sort, Collections.sort, List's sort
+  - merge sort
+- quadratic: O(n^2)
+  - selection sort
+  - bubble sort
+  - insertion sort
+- cubic: O(n^3)
+- exponential: O(2^n)
+
+Very informal definition of Big Oh notation
+(formal definition in Analysis of Algorithms):
+- A function f(n) is O(g(n)) if f(n) <= g(n) when
+    - We ignore constant factors
+    - we only focus on the most significant term.
+    - We only care about what happens when n is large - asymptotic analysis.
+- Examples:
+    - n^2 is O(n^2) [every function is big oh of itself]
+    - Technically, n^2 is also O(n^3) and also O(n^4)
+        -- But we usually don't write this; we like a tight bound.
+    - 100*n^2 + 45n - 3 is O(n^2)
+    - n/4 is O(n), since n/4 = (1/4)*n
+    - n^3 is O(2^n), even though n^3 <= 2^n is not true for
+      small values of n, such as n=3:
+      n^3 = 3^3 = 27
+      2^n = 2^3 = 8
+    - 156 is O(1), since 156 = 1 * 156
+    - 100^100 is O(1)
+
+Use the tightest possible bound:
+- Technically, 3n is O(n^2), and O(n^3), etc.
+- But we should use the big-Oh notation to characterize a function
+  as closely as possible
+- So we say that 3n is O(n).
+
+Write big-oh notation as simply as possible:
+- Technically, 3n + 15 is O(3n + 1).
+- But we should say it as simply as possible.
+- So we say that 3n + 15 is O(n).
+- Similarly, we don't use things like O(100); we instead say O(1).
+
+Example:
+- Consider: program A's running time is 10*n + 100, and program B's is n^2.
+- Which is better? A, unless we're dealing with only small-sized inputs.
+
+Big-Oh can sometimes be misleading.
+- Consider: program C's running time is 1000000000*n, and program D's is n log n.
+- Just using big-Oh notation, C is better. But that would be a terrible choice
+  for any reasonably-sized input.
+
+Best case, worst case, and average case:
+- The running time of a piece of code might depend on the state of
+  the provided data.
+- Example: linear search: the running time depends on where in the array
+  the desired element is located.
+    - In the best case, it's at the beginning: O(1)
+    - In the worst case, it's at the end, or it doesn't exist: O(n)
+    - On average, we have to look at half the elements: n/2, which is O(n)
+- For many algorithms, we can differentiate between the best-case running time,
+  the worst-case running time, and the average-case running time.
+  - Best case is rarely useful to know.
+  - Average case is usually difficult to determine.
+  - We typically focus on worst case.
+- Example: selection sort: always O(n^2), even if the array is already sorted
+  - Best case = worst case: running time of O(n^2)
+- Example: for the optimized bubble sort, if the array comes fully sorted,
+  then only one pass is performed, and we're done: O(n). In the worst case, we
+  must perform all passes: O(n^2). Average turns out to be O(n^2).
+
+Space complexity:
+- Just as we can talk about the time complexity of a piece of code,
+  we can talk about the space complexity of a piece of code:
+  how much memory does it require?
+- The memory used by the input (such as an array) doesn't count.
+- We can use big-Oh notation for space complexity.
+
+Logarithms:
+- Log base b of n is approximately equal to the number of times
+  that n can be divided by b until we reach 1 or lower.
+- In computer science, base 2 is the most common logarithm base,
+  so we write log base 2 of n as just log n.
+- When using big-Oh notation, a log of any base can be simplified
+  to log base 2, since logs of different bases differ only by constant factors,
+  due to the "change of base formula."
