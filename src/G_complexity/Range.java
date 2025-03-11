@@ -20,7 +20,7 @@ public class Range {
 
         return maxDiff;
     }
-    // running time:
+    // running time: O(n^2)
 
     public static int rangeFaster(int[] numbers) {
         int maxDiff = 0;
@@ -38,6 +38,7 @@ public class Range {
 
         return maxDiff;
     }
+    // still O(n^2), but faster
 
     public static int rangeFast(int[] numbers) {
         int max = numbers[0], min = numbers[0];
@@ -54,4 +55,5 @@ public class Range {
 
         return max - min;
     }
+    // O(n)
 }
