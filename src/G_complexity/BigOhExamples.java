@@ -97,6 +97,19 @@ public class BigOhExamples {
         System.out.println(sum);
     }
 
+    // O(n^4)
+    public static void m5b(int n) {
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n * n; j++) {
+                for (int k = 0; k < n; k++) {
+                    sum++;
+                }
+            }
+        }
+        System.out.println(sum);
+    }
+
     /*
     How many times does sum++ run in method m6?
     i:             0   1   2   3         n-1
