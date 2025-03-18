@@ -174,7 +174,7 @@ public class BigOhExamples {
         return list.get(list.size() / 2);
     }
 
-    // O(n)
+    // O(n), where n is list.size()
     public static double middle(LinkedList<Double> list) {
         return list.get(list.size() / 2);
     }
@@ -211,7 +211,7 @@ public class BigOhExamples {
     public void m10(int n) {
         while (n > 1) {
             System.out.println(n);
-            n = n / 3;
+            n /= 3;
         }
     }
 

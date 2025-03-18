@@ -1,7 +1,7 @@
 package H_array_list;
 
 // a very abbreviated version of java.util.List
-public interface List<E> {
+public interface MyList<E> {
     int size();
     E get(int index);
     void add(int index, E element);

@@ -1,5 +1,7 @@
 package G_complexity;
 
+import java.util.Arrays;
+
 public class Range {
     // returns the range of values in the given array:
     // the difference between elements furthest apart.
@@ -40,7 +42,14 @@ public class Range {
     }
     // running time: still O(n^2), but faster
 
-    public static int rangeFast(int[] numbers) {
+    public static int rangeEvenFaster(int[] numbers) {
+        int[] copy = Arrays.copyOf(numbers, numbers.length);
+        Arrays.sort(copy);
+        return copy[copy.length - 1] - copy[0];
+    }
+    // O(n log n)
+
+    public static int rangeFastest(int[] numbers) {
         int max = numbers[0], min = numbers[0];
 
         for (int i = 1; i < numbers.length; i++) {

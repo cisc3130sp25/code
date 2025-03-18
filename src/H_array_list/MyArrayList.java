@@ -2,17 +2,17 @@ package H_array_list;
 
 import java.util.Objects;
 
-public class ArrayList<E> implements List<E> {
+public class MyArrayList<E> implements MyList<E> {
     private E[] elements;
     private int size;
     private static final int DEFAULT_INITIAL_CAPACITY = 10;
 
-    public ArrayList() {
+    public MyArrayList() {
         this(DEFAULT_INITIAL_CAPACITY);
     }
 
     @SuppressWarnings("unchecked")
-    public ArrayList(int initialCapacity) {
+    public MyArrayList(int initialCapacity) {
         elements = (E[]) new Object[initialCapacity];
         size = 0;
     }
@@ -130,7 +130,7 @@ public class ArrayList<E> implements List<E> {
     // O(n), but O(n^2) if we would've used String instead of StringBuilder
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("]");
+        StringBuilder sb = new StringBuilder("[");
 
         for (int i = 0; i < size; i++) {
             sb.append(elements[i]);

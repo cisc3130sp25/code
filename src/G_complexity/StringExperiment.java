@@ -21,8 +21,8 @@ public class StringExperiment {
     /*
     String objects are immutable. Therefore, when executing `result += c`,
     Java does not add c to the end of an existing String object. Instead,
-    Java creates a new String object, copies all characters from result
-    into the new String object, and adds c at the end.
+    Java creates a new String object, copies all characters from the old
+    String object into the new String object, and adds c at the end.
     Running time of repeat1:
     - in the first pass of the loop, there is 1 step
     - in the second pass, there are two steps.
