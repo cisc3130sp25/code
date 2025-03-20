@@ -12,6 +12,17 @@ Three cases to consider in most of the below methods:
    at the head, or at the tail.
  */
 
+/*
+                        Singly-linked                       Doubly-linked
+                Only head       Head and tail       Only head       Head and tail
+getFirst          O(1)              O(1)              O(1)              O(1)
+getLast           O(n)              O(1)              O(n)              O(1)
+addFirst          O(1)              O(1)              O(1)              O(1)
+addLast           O(n)              O(1)              O(n)              O(1)
+removeFirst       O(1)              O(1)              O(1)              O(1)
+removeLast        O(n)              O(n)              O(1)              O(1)
+ */
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -104,7 +115,8 @@ public class SinglyLinkedList<E> implements Iterable<E> {
         return result;
     }
 
-    // O(n) since this is a singly-linked list; would be O(1) if it were a doubly-linked list
+    // O(n) since this is a singly-linked list;
+    // if it were a doubly-linked list, could be done in O(1) time
     public E removeLast() {
         if (isEmpty()) {
             throw new NoSuchElementException();
