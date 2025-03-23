@@ -8,8 +8,9 @@ Three cases to consider in most of the below methods:
    size == 1, head == tail and head != null and tail != null
 3. Immediately prior to the method being called, the list contains more than one element.
    size > 1, head != tail and neither are null
-   We may have to consider whether we are operating in the middle of the list,
-   at the head, or at the tail.
+
+For some methods, we may have to consider whether we are operating
+in the middle of the list, at the head, or at the tail.
  */
 
 /*

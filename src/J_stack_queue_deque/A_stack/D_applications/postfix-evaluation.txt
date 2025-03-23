@@ -1,0 +1,27 @@
+Notation    Description                     Examples
+infix       operator between operands       2 + 4
+                                            2 * 3
+                                            (3 + 7) * 18 + 2 / 4
+prefix      operator before operands        + 2 4
+            (aka functional notation)       * 2 3
+                                            + * + 3 7 18 / 2 4
+
+postfix     operator after operands         2 4 +
+            (aka reverse Polish notation)   2 3 *
+                                            3 7 + 18 * 2 4 / +
+
+Problem: given a String containing an expression in postfix notation, determine the result.
+For example, if the String is "5 2 + 11 3 - * 4 /", the result should be 14.
+For simplicity, assume that there are spaces between all numbers and operators.
+
+Solution: Use a stack of numbers.
+- First, split the string up into tokens separated by whitespace.
+  (You can use a Scanner for this; look for the Scanner constructor that takes a String.)
+- Then, for each token:
+    - If it is a number, push it onto the stack.
+    - Otherwise, if it is a valid operator, pop two numbers off the stack,
+      apply the operation to the two numbers, and push the result onto the stack.
+      (If there aren't two elements to pop off the stack, the expression is not valid.)
+    - Otherwise, the expression is not valid.
+- At the end, the stack should contain exactly one number, which is the result. Otherwise,
+  the expression is not valid.
