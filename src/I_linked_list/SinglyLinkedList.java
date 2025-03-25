@@ -143,7 +143,7 @@ public class SinglyLinkedList<E> implements Iterable<E> {
     }
 
     // O(n)
-    public E get(int index) {
+    public E set(int index, E element) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
@@ -154,7 +154,9 @@ public class SinglyLinkedList<E> implements Iterable<E> {
             current = current.next;
         }
 
-        return current.data;
+        E result = current.data;
+        current.data = element;
+        return result;
     }
 
     // O(n)
