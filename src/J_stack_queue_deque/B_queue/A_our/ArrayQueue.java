@@ -105,9 +105,8 @@ public class ArrayQueue<E> implements Queue<E> {
             }
 
             elements = newArray;
-            int currentSize = size();
+            indexOfLast = size() - 1;
             indexOfFirst = 0;
-            indexOfLast = currentSize - 1;
         }
     }
 
