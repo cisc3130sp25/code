@@ -1,0 +1,65 @@
+interface Set<E> extends Collection<E>
+    A Set is a Collection that does not permit any
+    duplicate elements.
+    The add(e) method doesn't add e, and returns false,
+    if e is already in the set.
+    Otherwise, the methods are like those of the Collection interface.
+
+class HashSet<E> implements Set<E>
+    This is the basic implementation of Set.
+    It uses a "hash table" to store the elements.
+    The elements have an unpredictable order.
+    Very fast: methods add(e), remove(o), and contains(o)
+    run in O(1) time! (Assuming that the elements come
+    from a class that has a "good" hashCode() method,
+    which is the case for Integer, Double, String, and most
+    other classes.)
+
+interface SequencedSet<E> extends Set<E>, SequencedCollection<E>
+    A SequencedSet is a Set (so no duplicates)
+    whose elements have a predictable order.
+
+class LinkedHashSet<E> extends HashSet<E> implements SequencedSet<E>
+    The order of the elements is "insertion order."
+    It uses a "hash table" along with a linked list to store the elements.
+    Still fast: methods add(e), remove(o), and contains(o) still
+    run in O(1) time, though a bit slower than HashSet.
+
+interface Map<K, V>
+    A mapping (association) from keys to values.
+    That is, a collection of entries, where each entry has a key
+    and a value.
+    A map allows you to search for a value based on a key.
+    Duplicate keys are not allowed; duplicate values are.
+    Each key maps to exactly one value.
+    Does not extend Iterable nor Collection.
+    Some methods:
+        size()
+        isEmpty()
+        put(key, value)
+        get(key)
+        getOrDefault(key, defaultValue)
+        remove(key)
+        containsKey(o)
+        containsValue(o)
+        keySet()
+        values()
+        entrySet()
+
+interface Map.Entry<K, V> (nested in the Map interface)
+    Some methods:
+        getKey()
+        getValue()
+        setValue()
+
+class HashMap<K, V> implements Map<K, V>
+    The basic implementation of Map.
+    When using a HashMap, all Map methods listed above,
+    except containsValue, run in O(1) time.
+    containsValue runs in O(n) time.
+    Iterating over a view of a map (obtained from keySet(), values(), or entrySet())
+    takes O(n) time.
+
+interface SequencedMap<K, V> extends Map<K, V>
+
+class LinkedHashMap<K, V> extends HashMap<K, V> implements SequencedMap<K, V>
