@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 public class ChainingHashSet<E> implements Set3130<E> {
+    // TODO (maybe) refactor to just use simple nodes; see here: https://courses.cs.washington.edu/courses/cse373/13wi/lectures/02-01/HashSet.java
+
     private Collection<E>[] buckets;
     private int size;
     private final double maxLoadFactor; // the highest level that this set's load factor can go. when the load factor goes above this level, we resize
