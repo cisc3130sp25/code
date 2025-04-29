@@ -47,8 +47,6 @@ public class WordLocationGenerator implements Iterable<WordLocation> {
         }
 
         private void findNextWordLocation() {
-            StringBuilder word = new StringBuilder();
-
             // skip non-letters
             while (!queue.isEmpty() && !Character.isLetter(queue.peek())) {
                 if (queue.remove() == '\n') {
@@ -59,16 +57,20 @@ public class WordLocationGenerator implements Iterable<WordLocation> {
                 }
             }
 
+            StringBuilder wordBuilder = new StringBuilder();
+
             // read letters and add them to the word
             while (!queue.isEmpty() && Character.isLetter(queue.peek())) {
-                word.append(queue.remove());
+                wordBuilder.append(queue.remove());
                 columnNumber++;
             }
 
-            if (word.isEmpty()) {
+            if (wordBuilder.isEmpty()) {
                 nextWordLocation = null;
             } else {
-                nextWordLocation = new WordLocation(word.toString(), new Location(lineNumber, columnNumber - word.length()));
+                nextWordLocation = new WordLocation(
+                        wordBuilder.toString(),
+                        new Location(lineNumber, columnNumber - wordBuilder.length()));
             }
         }
     }
