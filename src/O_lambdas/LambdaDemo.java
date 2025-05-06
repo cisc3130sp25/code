@@ -7,7 +7,7 @@ A lambda expression must implement the abstract method of a functional interface
 
 A lambda expression can be assigned to a variable, or can be passed to a method.
 
-Basic:
+Basic syntax of lambda expression:
 (type0 param0, type1 param1, etc.) -> {
     method body
 }
@@ -15,14 +15,14 @@ Basic:
 The parameter types must correspond to the parameter types in the functional interface.
 
 Simplifications:
-- parameter types can almost always be omitted
-- if exactly one parameter, then parentheses can be omitted
-- if the method body consists of a single return statement,
+- A lambda's parameter types can almost always be omitted.
+- If the lambda has exactly one parameter, then the parentheses can be omitted.
+- If the method body consists of a single return statement,
   then the word "return", and the curly braces, can be omitted.
-- if the method body consists of a single statement, such as a
+- If the method body consists of a single statement, such as a
   print statement, the curly braces can be omitted.
 
-The body of an ideal lambda expression consists of just a single statement.
+Ideally, the body of a lambda expression consists of just a single statement.
 
 When a lambda expression simply calls another method, it can be
 written in a shorthand way known as a method reference.
@@ -30,7 +30,7 @@ Examples:
     (x, y) -> Math.max(x, y) simplifies to: Math::max
 General syntax: method location, two colons, method name.
 
-More details: four kinds of method references:
+More details: there are four kinds of method references:
 Name	    Syntax	                    Lambda equivalent
 Static	    RefType::staticMethod	    (args) -> RefType.staticMethod(args)
             Math::max                   (x, y) -> Math.max(x, y)

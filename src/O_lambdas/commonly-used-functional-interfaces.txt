@@ -1,32 +1,39 @@
-interface	        functional method	        example lambda
+Functional interface: Comparator<T>
+Its functional method: int compare(T t1, T t2)
+Example creation via lambda: Comparator<String> naturalOrder = (s1, s2) -> s1.compareTo(s2);
 
-Comparator<T>	    int compare(T t1, T t2)
-Comparator<String> naturalOrder = (s1, s2) -> s1.compareTo(s2);
-
-Consumer<T>	        void accept(T t)
+Consumer<T>
+void accept(T t)
 Consumer<String> printer = s -> System.out.println(s);
 
-BiConsumer<T, U>	void accept(T t, U u)
+BiConsumer<T, U>
+void accept(T t, U u)
 BiConsumer<String, Integer> printerOfTwo = (s, i) -> System.out.println(s + " " + i);
 
-UnaryOperator<T>	T apply(T t)
+UnaryOperator<T>
+T apply(T t)
 UnaryOperator<String> upperCaser = s -> s.toUpperCase();
 
-BinaryOperator<T>	T apply(T t1, T t2)
+BinaryOperator<T>
+T apply(T t1, T t2)
 BinaryOperator<Double> multiplier = (a, b) -> a * b;
 
-Predicate<T>	    boolean test(T t)
+Predicate<T>
+boolean test(T t)
 Predicate<String> emptinessTester = s -> s.isEmpty();
 
-Function<T, R>	    R apply(T t)
+Function<T, R>
+R apply(T t)
 Function<Integer, Double> squareRooter = i -> Math.sqrt(i);
 Function<String, Integer> lengthGetter = s -> s.length();
 Function<String, String> firstTwoCharsGetter = s -> s.substring(0, 2);
 
-Supplier<T>	        T get()
+Supplier<T>
+T get()
 Supplier<Double> randomGenerator = () -> Math.random();
 
 For most of the above, there are primitive specializations for int, long, and double.
 For example,
-ToIntFunction<T>    int applyAsInt(T value)
+ToIntFunction<T>
+int applyAsInt(T value)
 ToIntFunction<String> lengthGetter = s -> s.length();
