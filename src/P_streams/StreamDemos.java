@@ -4,30 +4,30 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /*
-A stream pipeline has three parts:
-- exactly one source, such as a collection
-- any number of intermediate operations
-- exactly one terminal operation
+A stream is a sequence of elements that provides various aggregate
+operations, such as filter, map, and reduce.
 
 We use streams to construct a "pipeline" through which elements flow
-- from the source
-- through the intermediate operations
+- from a source, such as a collection or file
+- through zero or more intermediate operations
 - to the terminal operation.
 
 A stream does not modify the contents of the source.
 
-A stream does not store elements. Instead, it moves elements from a source through a pipeline and processes them.
+A stream does not store elements. Instead, it moves elements through
+a pipeline and processes them.
 
 Each intermediate operation returns a new Stream, so operations can be chained.
 
 Some intermediate operations: filter, map, mapToInt, distinct, sorted
 
-Some terminal operations: count, max, toList, average, sum, forEach, findAny, collect
+Some terminal operations: count, max, toList, average, sum, forEach, findAny, collect.
 
 The elements of a stream are not processed until a terminal operation is invoked.
-At that point, the source produces the necessary elements, the intermediate operations are
-performed, and the terminal operation returns a result.
-This allows for the source of a stream to be potentially infinite.
+At that point, the source produces the necessary elements, the intermediate
+operations are performed, and the terminal operation returns a result.
+
+This "laziness" allows for the source of a stream to be potentially infinite.
 For example, new Random().ints() creates an infinite stream. But no elements are
 actually generated until the terminal operation is invoked. So, for example,
     new Random().ints().distinct().limit(10).boxed().toList()
@@ -36,15 +36,17 @@ take infinite time to complete.
 
 An Optional object: an object that is either empty or contains a value.
 Like a collection that contains at most 1 element.
-Used as the return type of methods like max that can't always
+Used as the return type of methods, like max, that can't always
 return a value, since the stream might be empty.
 
-Stream is a generic interface, so we can have Stream<String>, Stream<Person>, Stream<Integer>.
+Stream is a generic interface, so we can have Stream<String>,
+Stream<Person>, Stream<Integer>, etc.
 
-There are also primitive specializations for int, long and double: IntStream, LongStream, and DoubleStream.
+There are also primitive specializations for int, long and double:
+IntStream, LongStream, and DoubleStream.
 
-Just as there are primitive specializations for Stream<Integer>, etc., so too are there
-primitive specializations for Optional<Integer> etc.: OptionalInt, OptionalLong, OptionalDouble.
+Similarly, there primitive specializations for Optional<Integer> etc.:
+OptionalInt, OptionalLong, OptionalDouble.
 
 Creating a Stream<T> from a source:
 - Stream.of(T... values) returns a Stream<T>
@@ -55,7 +57,7 @@ Creating a Stream<T> from a source:
 
 Creating an IntStream from a source:
 - IntStream.of(int... values)
-- Arrays.steam(int[] array)
+- Arrays.stream(int[] array)
 - IntStream.range(int startInclusive, int endExclusive)
 - If rand refers to a Random object:
     - rand.ints() returns an infinite stream of random ints
@@ -98,8 +100,9 @@ Terminal operations specific to IntStream, DoubleStream, and LongStream:
 - min() [returns an optional]
 - max() [returns an optional]
 
-The collect method takes a Collector specifying how the elements of the stream should be collected.
-To easily create a Collector, we can use the following methods of the Collectors class:
+The collect method takes a Collector specifying how the elements of the
+stream should be collected. To easily create a Collector, we can use the
+following methods of the Collectors class:
 - toList() [.collect(Collectors.toList()) is equivalent to .toList()]
 - toSet()
 - joining() [concatenates the elements into a String]
