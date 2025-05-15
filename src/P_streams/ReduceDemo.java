@@ -11,8 +11,8 @@ public class ReduceDemo {
                 .reduce(0, (a, b) -> a + b); // 25
         // ((((0 + 5) + 3) + 1) + 7) + 9 = 25
         // or maybe:
-        // ((((0 + 3) + 5) + 9) + 1) + 4 = 25
-        // or may in some other order.
+        // ((((0 + 3) + 5) + 9) + 1) + 7 = 25
+        // or maybe in some other order.
         // So the binary operator must be associative (the order cannot matter)
         System.out.println("sum of odds: " + sum);
 
